@@ -7,11 +7,11 @@ const meng = {
   getUp: _ => {
     meng.isSleepy = true
   },
-  newDay:_=>{
+  init:_=>{
     setInterval(() => {
       meng.isSleepy ? meng.sleep() : meng.getUp()
-    }, Math.random() * 36000);
-
+    }, Math.random() * 10000);
+    
     Object.defineProperty(meng, 'isSleepy', {
       get: _ => {
         return isSleepy;
@@ -20,21 +20,10 @@ const meng = {
         isSleepy = value;
       }
     });
+    
     meng.isSleepy = false;
   },
 }
 
-const bear={
-  whatAreYouDoing:_=>{
-    setInterval(() => {
-      bear.dosth()
-    }, Math.random() * 3600);
-  },
-  dosth:_=>{
-    console.log('what are you doing?')
-    console.log(`${meng.isSleepy?'I\'m sleepy':'...'}`)
-  }
-}
 
-meng.newDay()
-bear.whatAreYouDoing()
+module.exports=meng
